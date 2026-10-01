@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Game Hub</title>
+</head>
+<body>
+  <main id="grid-screen" class="screen">
+    <h1 class="title">Game Hub</h1>
+    <div id="game-grid" class="game-grid"></div>
+    <p class="hint">Use arrow keys to choose, OK/Enter to play, Back to return</p>
+  </main>
+
+  <section id="player-screen" class="screen player-screen" hidden>
+    <div id="loader" class="loader">Loading…</div>
+    <div id="iframe-host" class="iframe-host"></div>
+  </section>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
