@@ -4,9 +4,9 @@ import "./style.css";
   "use strict";
 
   var GAMES = [
-    { name: "Egg Catcher", icon: "🥚", url: "https://eggcatcher-one.vercel.app/", closeMessageType: "egg-catcher:close" },
-    { name: "Frog Game", icon: "🐸", url: "https://froggamedemo.vercel.app/", closeMessageType: "frog-game:close" },
-    { name: "Skating Mummy", icon: "💀", url: "https://skatting-mummy.vercel.app/", closeMessageType: "skating-mummy:close" }
+    { name: "Egg Catcher", icon: "🥚", url: "https://eggcatcher-one.vercel.app/", closeMessageType: "close-game" },
+    { name: "Frog Game", icon: "🐸", url: "https://froggamedemo.vercel.app/", closeMessageType: "close-game" },
+    { name: "Skating Mummy", icon: "💀", url: "https://skatting-mummy.vercel.app/", closeMessageType: "close-game" }
   ];
 
   var BACK_KEYS = ["Escape", "Backspace", "GoBack", "BrowserBack"];
