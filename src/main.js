@@ -21,6 +21,7 @@ import "./style.css";
   var cards = [];
   var focusedIndex = 0;
   var lastFocusedIndex = 0;
+  var openGameIndex = -1;
 
   function buildGrid() {
     GAMES.forEach(function (game, index) {
@@ -57,6 +58,7 @@ import "./style.css";
 
   function openGame(index) {
     lastFocusedIndex = index;
+    openGameIndex = index;
     var game = GAMES[index];
 
     loader.hidden = false;
@@ -77,6 +79,7 @@ import "./style.css";
   }
 
   function closeGame() {
+    openGameIndex = -1;
     iframeHost.innerHTML = ""; // fully release the iframe/game memory
     loader.hidden = false;
 
@@ -119,7 +122,20 @@ import "./style.css";
     }
   }
 
+  // Each game posts its own close-message type (see each game's README)
+  // when its remote's Back button is pressed — this is the only way to
+  // close a game once keyboard focus has moved inside its cross-origin
+  // iframe, since key events never bubble out to this parent document.
+  function onMessage(e) {
+    if (openGameIndex === -1) return;
+    var expectedType = GAMES[openGameIndex].closeMessageType;
+    if (e.data && e.data.type === expectedType) {
+      closeGame();
+    }
+  }
+
   buildGrid();
   document.addEventListener("keydown", onKeyDown);
+  window.addEventListener("message", onMessage);
   focusCard(0);
 })();
